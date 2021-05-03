@@ -1,7 +1,5 @@
 
 
-
-
 //================react-dropdown-select Test==========================
 
 
@@ -13,22 +11,58 @@ import {
   waitForElement,
   getByText
 } from "react-testing-library";
-import App from "./App";
 
-afterEach(cleanup);
 
-const setup = () => {
-  const utils = render(<App />);
-  const selectOutput = utils.getByTestId("select-output");
-  const selectInput = document.getElementById("react-select-2-input");
-  return { selectOutput, selectInput };
-};
+const MyDropdown = () => (
+    <Dropdown
+        data-testid="dropdown"
+        options={options}
+        defaultValue={options[0].value}
+    />
+);
 
-test("it can change selected item", async () => {
-  const { selectOutput, selectInput } = setup();
-  getByText(selectOutput, "Shanahan Mill");
-  fireEvent.change(selectInput, { target: { value: "Mellie Leannon"} });
-  await waitForElement(() => getByText(selectOutput, "Mellie Leannon"));
-  expect(screen.getByText("selected option name is ")).toBeInTheDocument();
+// not sure if framwork need this function:
+
+ before(function(done) {
+    driver
+      .navigate()
+      .to("https://sanusart.github.io/react-dropdown-select/")
+      .then(() => done());
+  });
+
+it('runs without crashing', () => {
+    render(<MyDropdown />);
 });
+
+it('can change the value of the dropdown', () => {
+    const { getByTestId } = render(<MyDropdown />);
+
+    const dropdown = getByTestId('dropdown');
+
+    const display = dropdown.children[0];
+
+    expect(display.textContent).toBe(options[0].text);
+
+    console.log(display.textContent);
+
+    fireEvent.click(dropdown);
+
+    const dropdownOptions = getAllByRole(dropdown, 'option');
+
+    fireEvent.click(dropdownOptions[2]);
+
+    expect(display.textContent).toBe(options[2].text);
+
+    console.log(display.textContent);
+
+ // fireEvent.change(selectInput, { target: { value: "Mellie Leannon"} });
+ // await waitForElement(() => getByText(selectOutput, "Mellie Leannon"));
+ // expect(screen.getByText("selected option name is ")).toBeInTheDocument();
+
+   after(function(done) {
+    driver.quit().then(() => done());
+});
+
+
+
 
