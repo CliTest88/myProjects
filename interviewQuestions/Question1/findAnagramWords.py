@@ -3,6 +3,17 @@ import os
 import sys
 import time
 
+#  Input:
+#  An input array contains the given set of words as below:
+#  sInput = "ARMY AZYY"
+#  sInput = "ARMY MARY AMRY AYMR AZYY ZAYY"
+
+#  Output:
+#  Strings in this array: ['MARY', 'AMRY', 'AYMR', 'ARMY'] are anagrams
+#  Strings in this array: ['AZYY', 'ZAYY'] are anagrams
+
+#  If no anagrams found then print message below:
+#  No anagrams found in those strings: ARMY AZYY
 
 
 def findAnagrams (sInput):
@@ -96,5 +107,5 @@ if __name__ == "__main__":
       if len(i) != 0:
          print "Strings in this array: %s are anagrams"%i
   else:
-      print "There are no anagrams string found in those string list: %s"%sInput
+      print "No anagrams found in those strings: %s"%sInput
 
