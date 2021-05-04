@@ -9,8 +9,8 @@ import time
 #  sInput = "ARMY MARY AMRY AYMR AZYY ZAYY"
 
 #  Output:
-#  Strings in this array: ['MARY', 'AMRY', 'AYMR', 'ARMY'] are anagrams
-#  Strings in this array: ['AZYY', 'ZAYY'] are anagrams
+#  Strings in list: ['MARY', 'AMRY', 'AYMR', 'ARMY'] are anagrams
+#  Strings in list: ['AZYY', 'ZAYY'] are anagrams
 
 #  If no anagrams found then print message below:
 #  No anagrams found in those strings: ARMY AZYY
@@ -105,7 +105,7 @@ if __name__ == "__main__":
   if len(anagramsList) != 0:
     for i in anagramsList:
       if len(i) != 0:
-         print "Strings in this array: %s are anagrams"%i
+         print "Strings in this list: %s are anagrams"%i
   else:
       print "No anagrams found in those strings: %s"%sInput
 
