@@ -4,13 +4,13 @@ import sys
 import time
 
 #  Input:
-#  An input array contains the given set of words as below:
+#  An input string contains the given set of words as below:
 #  sInput = "ARMY AZYY"
 #  sInput = "ARMY MARY AMRY AYMR AZYY ZAYY"
 
 #  Output:
-#  Strings in list: ['MARY', 'AMRY', 'AYMR', 'ARMY'] are anagrams
-#  Strings in list: ['AZYY', 'ZAYY'] are anagrams
+#  Strings in this list: ['MARY', 'AMRY', 'AYMR', 'ARMY'] are anagrams
+#  Strings in this list: ['AZYY', 'ZAYY'] are anagrams
 
 #  If no anagrams found then print message below:
 #  No anagrams found in those strings: ARMY AZYY
@@ -42,8 +42,8 @@ def findAnagrams (sInput):
                 if len(sanagramsList) != 0:
                    sanagramsList.append(sItem)
                    anagramsList.append(sanagramsList)
-                   upDateList(sList, sanagramsList)
-                   upDateList(snList, sanagramsList)
+                   updateList(sList, sanagramsList)
+                   updateList(snList, sanagramsList)
                 elif len(sList) == 2:
                   sItem = sList[0]
                   nItem = sList[1]
@@ -85,7 +85,7 @@ def isAnagrams(item1, item2):
 
     
         
-def upDateList(oList, inputList):
+def updateList(oList, inputList):
 
     for item in inputList:
         if item in oList:
